@@ -3,13 +3,8 @@
 const express = require('express')
 const recipesApi = express.Router()
 
-const recipeApiMainUrl = `https://api.edamam.com/api/recipes/v2` //?type=public//&q=${query}&app_id=771f2ede&app_key=e07cd2b76ca600614a8f12ec61ee4afd${filter}
-const recipeApiKey = process.env.RECIPE_API_KEY //type=public&app_id=771f2ede&app_key=e07cd2b76ca600614a8f12ec61ee4afd
-
-// id -> https://api.edamam.com/api/recipes/v2/60dbd058b40243b6716f7ef27c4c7291?type=public&app_id=771f2ede&app_key=e07cd2b76ca600614a8f12ec61ee4afd
-//query -> https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=771f2ede&app_key=e07cd2b76ca600614a8f12ec61ee4afd
-// -> https://api.edamam.com/api/recipes/v2
-//?q=apple&app_key=e07cd2b76ca600614a8f12ec61ee4afd&_cont=CHcVQBtNNQphDmgVQntAEX4BYl1tBAMDR2JEAWobalFzAAAVX3cUVmNBZ1VzVVUPSjNGVTEbYQEgBwQAFWNBBTZFY1RyBxFqX3cWQT1OcV9xBB8VADQWVhFCPwoxXVZEITQeVDcBaR4-SQ%3D%3D&type=public&app_id=771f2ede
+const recipeApiMainUrl = `https://api.edamam.com/api/recipes/v2` 
+const recipeApiKey = process.env.RECIPE_API_KEY 
 
 
 //search with specific id
