@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
+/* font-family: 'Lily Script One'; */
+
+
+/* general */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--letterColor);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+:root{
+    --bgcPrimary: white;
+    --bgcSecundary: rgb(233, 233, 233);
+    --sectionBorderColor: rgb(200, 200, 200);
+    --borderColor: black;
+    --letterColor: black;
+    --invertedIconColor: invert(100%);
+    --iconColor: invert(0);
+    --iphoneCheckboxColor: rgb(0, 255, 0)
+}
+.section {
+    border-bottom: solid 1px var(--sectionBorderColor)
+}
+
+input {
+  all: unset;
+  background-color: var(--bgcSecundary);
+  border: 1px solid var(--borderColor);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+
+/* main menu */
+
+#mainMenu {
+    padding: 10px;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+    background-color: var(--bgcPrimary);
+}
+#mainMenu > *{
+    height: 40px;
+    margin: auto;
+    border-radius: 10px;
+}
+#mainMenu-menu img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#mainMenu h1 {
+    font-family: 'Lily Script One';
+    color: orange;
+    font-size: 30px;
+}
+.loggedIn{
+  border-radius: 50%;
+  border: 1px solid var(--borderColor);
+  aspect-ratio: 1/1;
+}
+
+
+/* user menu container */
+
+#userMenuContainer{
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    right: 100%;
+    width: 100%;
+    transition: right .2s ease;
+    background-color: var(--bgcPrimary);
+    overflow-y: scroll;
+}
+#userMenuContainer > header{
+    display: flex;
+    justify-content: space-between;
+}
+#userMenuContainer > header > *{
+    padding: 30px;
+}
+#userMenuContainer > main{
+  height: 100%;
+  width: 80%;
+  margin: auto;
+}
+
+/* user menu container (user settings) */
+
+.deploy{
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid var(--borderColor)
+}
+.deploy > h2{
+  margin: 10px;
+}
+.deploy .deployContent{
+  overflow: hidden;
+  height: 0;
+}
+.deploy .deployContent figure{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 5px auto;
+  font-size: 20px;
+  gap: 5px;
+}
+.deploy .deployContent figure input{
+  min-width: 150px;
+  width: 100%;
+  margin: 3px;
+  min-height: 30px;
+}
+.deploy .deployContent .deployTitle{
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  margin: 10px;
+}
+.saveDeploy{
+  min-width: 0;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+/* show more details (swal content) */
+
+#showMoreDetailsCont p {
+  margin: 10px;
+  text-align: left;
+}
+#showMoreDetailsCont input{
+  width: 90%;
+  margin: auto;
+}
+
+/* user menu container (settings > fav recipes) */
+#favRecipesCont{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.favRecipe{
+  max-width: 200px;
+  margin: 10px;
+}
+.favRecipe > img {
+  border-radius: 10px;
+  width: 100%;
+}
+
+
+/* login - signin (Swal container) */
+
+.whatOperationLogin {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.whatOperationLogin > span{
+  font-size: 25px;
+  font-weight: 500;
+  padding: 3px;
+  margin: 20px;
+}
+.whatOperationLogin > #operationMarker{
+  position: absolute;
+}
+.whatOperationLogin > span:nth-child(1){
+  border-bottom: solid 2px var(--borderColor);
+}
+#loginInputs > div{
+  margin: 10px 0;
+}
+
+/* search recipe container */
+
+#searchContainer{
+  background-color: var(--bgcPrimary);
+  position: absolute;
+  top: -70px;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top .2s ease;
+}
+#searchContainer > *{
+  margin: 0 20px;
+}
+#searchContainer #searchContent{
+  display: flex;
+  width: 55%;
+  border: 1px solid var(--borderColor);
+  border-radius: 10px;
+}
+#searchContainer input{
+  all: unset;
+  width: 100%;
+  font-size: 20px;
+  background-color: var(--bgcPrimary);
+  margin: 0 10px;
+}
+
+/* filters (btn and container) */
+
+#showFiltersBtn{
+  display: flex;
+  justify-content: right;
+}
+#showFiltersBtn > div{
+  margin: 0 15px;
+}
+
+#filtersContainer{
+  transition: left .3s ease;
+  overflow-y: scroll;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  left: 100%;
+  background-color: var(--bgcPrimary);
+}
+/* #filtersContainer .deployContent > div{
+  display: flex;
+} */
+#filtersContainer header{
+  display: flex;
+  justify-content: space-between;
+}
+#filtersContainer header > *{
+  padding: 30px;
+}
+#filtersContainer footer{
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+#filtersContainer footer > *{
+  min-width: 40%;
+  margin: 2.5%;
+  text-align: center;
+}
+
+#filtersContainer .deploy input{
+  all: revert;
+}
+
+/* recipes container */
+
+#recipesContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#recipesContainer > .recipe{
+  width: 250px;
+  margin: 15px;
+  background-color: var(--bgcSecundary);
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 45px;
+  position: relative;
+}
+.recipe > *{
+  margin: 10px 0;
+}
+.recipe h2{
+  width: 100%;
+  text-align: center;
+}
+.recipe p {
+  font-size: 20px;
+}
+.recipe > .imgContainer{
+  width: 90%;
+  margin: auto;
+}
+.recipe > .imgContainer > img{
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  object-position: center; 
+  border-radius: 10px;
+}
+.recipe > .iconContainer{
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 20px);
+  height: 35px;
+  display: flex;
+  justify-content: space-around;
+}
+.recipe > .iconContainer div{
+  width: fit-content;
+  height: 100%;
+}
+.recipe > .iconContainer div img{
+  height: 100%;
+}
+
+#pageControl {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+#pageControl > *{
+  display: none;
+  text-align: center;
+  font-size: 20px;
+  height: fit-content;
+  margin: auto;
+  width: 30%;
+}
