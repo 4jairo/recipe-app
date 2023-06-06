@@ -8,14 +8,15 @@
     <link rel="icon" type="image/ico" href="imgs/allRecipesIcon.ico">
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" id="sweetalert2Black"/>
 </head>
 <body>
     <!-- main Menu -->
 
     <nav id="mainMenu" class="section">
-        <div id="mainMenu-menu"><img src="imgs/login.svg"></div>
+        <div id="mainMenu-menu"><img src="imgs/login.svg" class="icon"></div>
         <div><h1 id="mainMenu-title">allRecipes!</h1></div>
-        <div id="mainMenu-search"><img src="imgs/search.svg"></div>
+        <div id="mainMenu-search"><img src="imgs/search.svg" class="icon"></div>
     </nav>
 
     <!-- search container -->
@@ -23,9 +24,9 @@
     <nav id="searchContainer" class="section">
         <div id="searchContent">
             <input type="text" id="searchRecipe" placeholder="search some recipes!">
-            <img src="imgs/search.svg" id="searchRecipeBtn">  
+            <img src="imgs/search.svg" class="icon" id="searchRecipeBtn">  
         </div>
-        <div id="closeSearchContent"><img src="imgs/x.svg"></div>
+        <div id="closeSearchContent"><img src="imgs/x.svg" class="icon"></div>
     </nav>
 
     <!-- user menu container -->
@@ -36,7 +37,7 @@
                 <h1 id="userNameElement"></h1>
             </div>
             <div id="closeUserMenuContainer">
-                <img src="imgs/x.svg">  
+                <img src="imgs/x.svg" class="icon">  
             </div>
         </header>
         <main>
@@ -48,7 +49,7 @@
     <div id="filtersContainer">
         <header id="filtersHeader">
             <h1>Filters</h1>
-            <div id="closeFiltersContainer"><img src="imgs/x.svg"></div>
+            <div id="closeFiltersContainer"><img src="imgs/x.svg" class="icon"></div>
         </header>
         <div id="filtersContent"></div>
         <footer>
@@ -58,7 +59,7 @@
     </div>
 
     <div class="section" id="showFiltersBtn">
-        <div><img src="imgs/filter.svg"></div>
+        <div><img src="imgs/filter.svg" class="icon"></div>
     </div>
 
     <!-- recipes container -->

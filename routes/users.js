@@ -48,6 +48,7 @@ userRouter.post('/login', tokenAuth, async (req, res, next) => {
     const token = res.token
 
     const user = await UserModel.findById(userId)
+
     const {favourites, name, avatar} = user
     res.json({ 
         token,

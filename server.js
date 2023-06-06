@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users')
 const uplaodRouter = require('./routes/uploads')
 
 const handleErrors = require('./middleware/handleErrors.js')
+const notFound = require('./middleware/notFound')
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -23,17 +24,19 @@ app.use('/api', recipesApi)
 app.use('/', usersRouter)
 app.use('/upload', uplaodRouter)
 
-//app.use(handleErrors)
+app.use(notFound)
+app.use(handleErrors)
 
 
 app.listen(3000, () => {
     console.log('http://localhost:3000')
 })
-
+ 
 mongoose.connect(process.env.MONGO_DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
+
 // mongoose.connect('mongodb://127.0.0.1:27017/recipesDB', {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,

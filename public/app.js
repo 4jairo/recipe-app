@@ -59,7 +59,7 @@ function interactiveDeployeables(containerId){
         const deployContent = element.querySelector('.deployContent')
 
         element.addEventListener('click', (e) => {
-            if(e.target.tagName === 'INPUT' ||e.target.tagName === 'IMG') return
+            if(['INPUT', 'IMG', 'LABEL'].includes(e.target.tagName)) return
 
             if(element.getAttribute('data-deployed')){
                 deployContent.style.height = '0'
@@ -107,8 +107,8 @@ async function showRecipes(response, eraseRecipes){
             <p><b>Dish type:</b> ${dishType}</p> 
             <p><b>Calories:</b> ${calories.toFixed(2)}</p>
             <div class="iconContainer">
-                <div data-operation="favourite"><img src="${favImg}"></div>
-                <div data-operation="share" data-share="${url}"><img src="imgs/share.svg"></div>
+                <div data-operation="favourite"><img src="${favImg}" class="icon"></div>
+                <div data-operation="share" data-share="${url}"><img src="imgs/share.svg" class="icon"></div>
             </div>
         </div>`
     }
@@ -211,14 +211,17 @@ function showFilters(){
 
     let content  = ''
     for (const f of filters) {
+        const rawFilterName = f[0]
         const filterName = f[0].split(/(?=[A-Z])/).join(' ').toLowerCase()
         const filterContent = f[1]
 
         content += `<div class="deploy"><h2>${filterName}</h2><div class="deployContent">`
         for (const value of filterContent) {
             content += `
-            <p>${value}</p>
-            <div><input type="checkbox" data-filterclass="${f[0]}" data-filter="${value}"></div>`
+            <div>
+                <input type="checkbox" data-filterclass="${rawFilterName}" data-filter="${value}" id="${rawFilterName}${rawFilterName}">
+                <label for="${rawFilterName}${rawFilterName}">${value}</label>
+            </div>`
         }
         content += '</div></div>'
     }
@@ -299,7 +302,7 @@ function logoutUser(){
             <h1 id="userNameElement"></h1>
         </div>
         <div id="closeUserMenuContainer">
-            <img src="imgs/x.svg">
+            <img src="imgs/x.svg" class="icon">
         </div>
     </header>
     <main></main>`
@@ -363,7 +366,7 @@ function setUser(response){
     localStorage.setItem('token', response.token)
 
     // fav recipes
-    favouriteRecipes = response.favourites
+    if(favouriteRecipes) favouriteRecipes = response.favourites
 
     //userMenu
     const userElement = mainMenu.querySelector('#mainMenu-menu')
@@ -448,7 +451,38 @@ function setUserUtils(){
         }
     })
 
-    //logout btn
+    //settings (theme btn)
+
+    changeThemeBtn.addEventListener('click', () => {
+        const d = document.documentElement.style
+        if(changeThemeBtn.value === 'white'){ 
+            changeThemeBtn.value = 'black'
+
+            //link to swal black theme
+            sweetalert2Black.href = 'https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css'
+            d.setProperty('--bgcPrimary','rgb(25, 25, 25)')
+            d.setProperty('--bgcSecundary','rgb(50, 50, 50)')
+            d.setProperty('--borderColor', 'rgb(180, 180, 180)')
+            d.setProperty('--sectionBorderColor', 'rgb(50, 50, 50)')
+            d.setProperty('--letterColor', 'white')
+            d.setProperty('--invertedIconColor', 'invert(0)')
+            d.setProperty('--iconColor', 'invert(75%)')
+            d.setProperty('--iphoneCheckboxColor', 'rgba(220, 79, 255, .6)')
+        } else {
+            changeThemeBtn.value = 'white'
+            sweetalert2Black.href = ''
+            d.setProperty('--bgcPrimary','#fff')
+            d.setProperty('--bgcSecundary','rgb(233, 233, 233)')
+            d.setProperty('--borderColor', 'rgb(180, 180, 180)')
+            d.setProperty('--sectionBorderColor', 'rgb(200, 200, 200)')
+            d.setProperty('--letterColor', 'black')
+            d.setProperty('--invertedIconColor', 'invert(100%)')
+            d.setProperty('--iconColor', 'invert(0)')
+            d.setProperty('--iphoneCheckboxColor', 'rgb(0, 255, 0)')
+        }
+    })
+
+    //settings (logout btn)
     logoutBtn.addEventListener('click', () => {
         moveUserMenu('close')
         logoutUser()

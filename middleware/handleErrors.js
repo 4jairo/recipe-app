@@ -23,8 +23,8 @@ module.exports = (err, req, res) => {
         ? errorCodes[err.name] 
         : errorCodes.default
 
-    // res.sendSatus(currentError.code).send({
-    //     error: currentError.message,
-    //     name: err.name
-    // })
+    res.sendSatus(currentError.code).send({
+        error: currentError.message,
+        name: err.name
+    })
 }
